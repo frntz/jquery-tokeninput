@@ -756,21 +756,19 @@
         function do_search() {
             var query = input_box.val().toLowerCase();
 
-            if (query && query.length) {
-                if (selected_token) {
-                    deselect_token($(selected_token), POSITION.AFTER);
-                }
+            if (selected_token) {
+                deselect_token($(selected_token), POSITION.AFTER);
+            }
 
-                if (query.length >= settings.minChars) {
-                    show_dropdown_searching();
-                    clearTimeout(timeout);
+            if (query.length >= settings.minChars) {
+                show_dropdown_searching();
+                clearTimeout(timeout);
 
-                    timeout = setTimeout(function() {
-                        run_search(query);
-                    }, settings.searchDelay);
-                } else {
-                    hide_dropdown();
-                }
+                timeout = setTimeout(function() {
+                    run_search(query);
+                }, settings.searchDelay);
+            } else {
+                hide_dropdown();
             }
         }
 
